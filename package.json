@@ -1,0 +1,22 @@
+{
+    "name": "electron-app",
+    "productName": "Electron App",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "build": "electron-builder -m",
+        "clean": "rm -rf dist/*",
+        "electron": "electron ."
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "react": "^16.8.6",
+        "react-dom": "^16.8.6"
+    },
+    "devDependencies": {
+        "electron": "^6.0.1",
+        "electron-builder": "^21.2.0"
+    }
+}
