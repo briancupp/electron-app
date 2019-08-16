@@ -4,6 +4,7 @@ const { app, BrowserWindow } = electron;
 const DEFAULT_OPTIONS = {
     width: 600,
     height: 400,
+    maximizable: false,
     resizable: false,
     show: false,
     title: app.getName(),
@@ -30,24 +31,34 @@ class Window extends BrowserWindow {
             return true;
         });
 
-        this.on('hide', () => {
-            console.log('window hidden');
-            app.dock.hide();
-        });
-
-        this.on('minimize', event => {
-            event.preventDefault();
-            this.hide();
-        });
+        this.on('hide', this.hideIcon.bind(this));
 
         this.on('ready-to-show', () => {
             this.show();
             this.focus();
         });
 
-        this.on('show', () => {
-            app.dock.show();
-        });
+        this.on('show', this.showIcon.bind(this));
+    }
+
+    hideIcon(event) {
+        if (this.isMinimized()) {
+            // Don't trigger hide when minimized.
+            event.preventDefault();
+            return false;
+        }
+
+        if (!this.isVisible()) {
+            app.dock.hide(); // OSX
+            this.setSkipTaskbar(true); // Windows
+        }
+    }
+
+    showIcon() {
+        if (this.isVisible()) {
+            app.dock.show(); // OSX
+            this.setSkipTaskbar(false); // Windows
+        }
     }
 }
 

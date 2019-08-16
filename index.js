@@ -15,7 +15,7 @@ let mainWindow, tray;
 app.on('ready', () => {
     //app.dock.hide();
     mainWindow = new MainWindow();
-    mainWindow.loadURL(`file://${__dirname}/views/index.html`);
+    mainWindow.loadFile('./views/index.html');
 
     mainWindow.on('closed', () => {
         mainWindow = null;
