@@ -83,7 +83,7 @@ class Window extends BrowserWindow {
     /**
      * Checks the visibility status of the window and shows the
      * dock/taskbar icon if it is.
-     *@returns {boolean}
+     * @returns {boolean}
      */
     showIcon() {
         if (this.isVisible()) {
