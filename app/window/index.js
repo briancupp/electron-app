@@ -73,7 +73,7 @@ class Window extends BrowserWindow {
         }
 
         if (!this.isVisible()) {
-            app.dock.hide(); // OSX
+            app.dock && app.dock.hide(); // OSX
             this.setSkipTaskbar(true); // Windows
         }
 
@@ -87,7 +87,7 @@ class Window extends BrowserWindow {
      */
     showIcon() {
         if (this.isVisible()) {
-            app.dock.show(); // OSX
+            app.dock && app.dock.show(); // OSX
             this.setSkipTaskbar(false); // Windows
         }
 
