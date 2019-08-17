@@ -1,7 +1,9 @@
-const electron = require('electron');
-const { app, BrowserWindow } = electron;
+import { app, BrowserWindow } from 'electron';
+
+import { colors } from '../../common/styles';
 
 const DEFAULT_OPTIONS = {
+    backgroundColor: colors.gray,
     width: 600,
     height: 400,
     maximizable: false,
@@ -9,7 +11,8 @@ const DEFAULT_OPTIONS = {
     show: false,
     title: app.getName(),
     webPreferences: {
-        backgroundThrottling: false
+        backgroundThrottling: false,
+        nodeIntegration: true
     }
 };
 
@@ -31,6 +34,10 @@ class Window extends BrowserWindow {
         this.on('ready-to-show', () => {
             this.show();
             this.focus();
+
+            if (!app.isPackaged) {
+                this.webContents.openDevTools();
+            }
         });
 
         // Manage the close window flow
@@ -95,4 +102,4 @@ class Window extends BrowserWindow {
     }
 }
 
-module.exports = Window;
+export default Window;

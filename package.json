@@ -2,21 +2,38 @@
     "name": "electron-app",
     "productName": "Electron App",
     "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "build": "electron-builder -m",
-        "clean": "rm -rf dist/*",
-        "electron": "electron ."
-    },
+    "description": "A dummy / boiler-plate electron app",
     "author": "",
     "license": "ISC",
+    "main": "src/main/index.js",
+    "scripts": {
+        "build": "electron-builder -mw",
+        "bundle": "electron-webpack",
+        "clean": "rm -rf dist/* && rm -rf dist/.*.html",
+        "compile": "npm run clean && npm run bundle && npm run build",
+        "dev": "electron-webpack dev"
+    },
     "dependencies": {
         "react": "^16.8.6",
-        "react-dom": "^16.8.6"
+        "react-dom": "^16.8.6",
+        "source-map-support": "^0.5.13",
+        "styled-components": "^4.3.2"
     },
     "devDependencies": {
+        "@babel/core": "^7.5.5",
+        "@babel/preset-env": "^7.5.5",
+        "@babel/preset-react": "^7.0.0",
         "electron": "^6.0.1",
-        "electron-builder": "^21.2.0"
+        "electron-builder": "^21.2.0",
+        "electron-webpack": "^2.7.4",
+        "webpack": "^4.39.2"
+    },
+    "build": {
+        "productName": "Electron App",
+        "appId": "com.briancupp.electronapp",
+        "files": [
+            "dist/main/*",
+            "dist/renderer/*"
+        ]
     }
 }

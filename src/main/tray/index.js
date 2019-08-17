@@ -1,5 +1,4 @@
-const electron = require('electron');
-const { app, Menu, Tray } = electron;
+import { app, Menu, Tray } from 'electron';
 
 /**
  * @class AppTray
@@ -54,4 +53,4 @@ class AppTray extends Tray {
     }
 }
 
-module.exports = AppTray;
+export default AppTray;

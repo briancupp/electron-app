@@ -7,4 +7,4 @@ const developerTemplate = [
     { role: 'fileMenu' }
 ];
 
-module.exports = developerTemplate;
+export default developerTemplate;
