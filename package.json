@@ -11,11 +11,12 @@
         "bundle": "electron-webpack",
         "clean": "rm -rf dist/* && rm -rf dist/.*.html",
         "compile": "npm run clean && npm run bundle && npm run build",
-        "dev": "electron-webpack dev"
+        "start": "electron-webpack dev"
     },
     "dependencies": {
         "react": "^16.8.6",
         "react-dom": "^16.8.6",
+        "react-dropzone": "^10.1.7",
         "source-map-support": "^0.5.13",
         "styled-components": "^4.3.2"
     },
@@ -25,7 +26,9 @@
         "@babel/preset-react": "^7.0.0",
         "electron": "^6.0.1",
         "electron-builder": "^21.2.0",
+        "electron-store": "^4.0.0",
         "electron-webpack": "^2.7.4",
+        "keytar": "^5.0.0-beta.0",
         "webpack": "^4.39.2"
     },
     "build": {
@@ -34,6 +37,11 @@
         "files": [
             "dist/main/*",
             "dist/renderer/*"
+        ]
+    },
+    "electronWebpack": {
+        "whiteListedModules": [
+            "react-dropzone"
         ]
     }
 }
